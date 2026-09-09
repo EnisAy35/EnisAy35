@@ -1,8 +1,8 @@
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=1,12,24&height=220&section=header&text=Enis%20Ay&fontSize=48&fontColor=ffffff&animation=fadeIn&subtext=Software%20Engineering%20Student%20%7C%20Game%20%26%20Software%20Developer&subfontSize=18&subtextBg=false" width="100%" alt="Header" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=1,12,24&height=220&section=header&text=Enis%20Ay&fontSize=48&fontColor=ffffff&animation=fadeIn&subtext=Software%20Engineer%20%7C%20Game%20%26%20Full%20Stack%20Developer&subfontSize=18&subtextBg=false" width="100%" alt="Header" />
 
   <a href="https://git.io/typing-svg">
-    <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=20&pause=1000&color=00D2FF&center=true&vCenter=true&width=580&lines=Game+Developer+%28Unity+%26+Unreal+Engine+5%29;Software+Engineering+Student+%40+Ya%C5%9Far+Univ.;React+Native+%26+Mobile+Development;Gameplay+Mechanics+%26+Game+Jams" alt="Typing SVG" />
+    <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=19&pause=1000&color=00D2FF&center=true&vCenter=true&width=620&lines=Game+Developer+%28Unity+%26+Unreal+Engine+5%29;Full+Stack+%26+Mobile+Engineer+%28Go+%2F+React+Native%29;Software+Engineering+Student+%40+Ya%C5%9Far+Univ.;Building+Scalable+Architectures+%26+Mechanics" alt="Typing SVG" />
   </a>
 
   <p align="center">
@@ -17,11 +17,11 @@
 ### 👨‍💻 About Me
 
 - 🎓 **Software Engineering** student at **İzmir Yaşar University**.
-- 🎮 Passionate **Game Developer** building interactive projects in **Unity (C#)** and **Unreal Engine 5 (C++ / Blueprints)**.
-- 📱 Developing mobile cross-platform applications with **React Native**.
-- ⚙️ Focused on **Gameplay Programming**, **Character Controllers**, **Physics Systems**, and **AI Navigation (NavMesh)**.
-- 🕹️ Active participant in **Game Jams** and indie game prototyping.
-- ☕ Strong foundation in **Java**, **Object-Oriented Programming (OOP)**, and **Software Architecture**.
+- 🎮 **Game Developer:** Building gameplay mechanics, character controllers, physics, and AI systems in **Unity (C#)** and **Unreal Engine 5 (C++ / Blueprints)**.
+- 📱 **Mobile & Web Development:** Experienced in building cross-platform mobile apps with **React Native (Expo)** and modern web applications with **Next.js / React** and **TypeScript**.
+- ⚙️ **Backend & Systems:** Developing high-performance, concurrent backend architectures and RESTful APIs using **Go (Golang)** with **PostgreSQL (JSONB)**.
+- 🧱 Strong understanding of **Object-Oriented Programming (OOP)**, **Clean Architecture**, and **Software Design Patterns**.
+- 🚀 Active participant in **Game Jams** and real-world software product engineering.
 
 ---
 
@@ -37,28 +37,32 @@
   <img src="https://img.shields.io/badge/.NET-512BD4?style=for-the-badge&logo=dotnet&logoColor=white" alt=".NET" />
 </p>
 
-#### 📱 Mobile & Web Development
+#### 📱 Mobile & Frontend
 <p>
   <img src="https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React Native" />
+  <img src="https://img.shields.io/badge/Expo-000020?style=for-the-badge&logo=expo&logoColor=white" alt="Expo" />
   <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" />
-  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript" />
+  <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js" />
   <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript" />
   <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5" />
   <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3" />
 </p>
 
-#### 💻 Programming Languages & Systems
+#### ⚙️ Backend, Databases & Systems
 <p>
-  <img src="https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white" alt="C#" />
-  <img src="https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white" alt="C++" />
+  <img src="https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white" alt="Go" />
+  <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL" />
   <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java" />
   <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" />
 </p>
 
-#### 🧰 Tools & Environments
+#### 🧰 Tools & DevOps
 <p>
   <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git" />
   <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
+  <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker" />
+  <img src="https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white" alt="Postman" />
   <img src="https://img.shields.io/badge/Visual_Studio-5C2D91?style=for-the-badge&logo=visual-studio&logoColor=white" alt="Visual Studio" />
   <img src="https://img.shields.io/badge/VS_Code-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white" alt="VS Code" />
 </p>
