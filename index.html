@@ -2,198 +2,127 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>Enis Ay - Mini DOOM FPS</title>
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      user-select: none;
-      -webkit-user-select: none;
-      -webkit-touch-callout: none;
-      touch-action: none;
-    }
-    html, body {
-      width: 100%;
-      height: 100%;
-      background: #090d13;
+    * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; }
+    body {
+      background: #0d1117;
       color: #fff;
       font-family: 'Courier New', Courier, monospace;
-      overflow: hidden;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      min-height: 100vh;
+      overflow: hidden;
     }
     #game-container {
       position: relative;
-      width: 100%;
-      max-width: 680px;
-      height: 100%;
-      max-height: 520px;
-      background: #000;
-      border: 3px solid #30363d;
+      width: 640px;
+      height: 480px;
+      max-width: 100vw;
+      max-height: 75vh;
+      border: 4px solid #30363d;
       border-radius: 8px;
-      box-shadow: 0 0 40px rgba(0, 210, 255, 0.25);
+      box-shadow: 0 0 30px rgba(0, 210, 255, 0.2);
+      background: #000;
       overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-    @media (max-width: 768px) {
-      #game-container {
-        max-width: 100vw;
-        max-height: 100vh;
-        height: 100%;
-        border: none;
-        border-radius: 0;
-      }
     }
     canvas {
       width: 100%;
-      flex: 1;
+      height: 100%;
       display: block;
       image-rendering: pixelated;
     }
     #hud {
+      position: absolute;
+      bottom: 0;
+      left: 0;
       width: 100%;
-      height: 44px;
+      height: 48px;
       background: #161b22;
-      border-top: 2px solid #30363d;
+      border-top: 3px solid #30363d;
       display: flex;
       align-items: center;
       justify-content: space-around;
       font-weight: bold;
-      font-size: 15px;
+      font-size: 16px;
       color: #00d2ff;
       letter-spacing: 1px;
-      z-index: 5;
     }
     .hud-val { color: #ff5555; }
     #crosshair {
       position: absolute;
-      top: calc(50% - 22px);
+      top: 50%;
       left: 50%;
       width: 16px;
       height: 16px;
       transform: translate(-50%, -50%);
       pointer-events: none;
-      z-index: 4;
     }
     #crosshair::before, #crosshair::after {
       content: '';
       position: absolute;
-      background: rgba(0, 255, 128, 0.85);
+      background: rgba(0, 255, 128, 0.7);
     }
     #crosshair::before { top: 7px; left: 0; width: 16px; height: 2px; }
     #crosshair::after { top: 0; left: 7px; width: 2px; height: 16px; }
-
-    /* Touch Controls Overlay */
-    #touch-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: calc(100% - 44px);
-      pointer-events: none;
-      z-index: 6;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      padding: 16px 20px 24px 20px;
-    }
-    .touch-btn {
-      pointer-events: auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(22, 27, 34, 0.65);
-      border: 2px solid rgba(255, 255, 255, 0.25);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-      color: #fff;
-      font-weight: bold;
-      font-size: 20px;
-      border-radius: 50%;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-      touch-action: none;
-      transition: background 0.1s, transform 0.1s;
-    }
-    .touch-btn:active, .touch-btn.active {
-      background: rgba(0, 210, 255, 0.4);
-      border-color: #00d2ff;
-      transform: scale(0.92);
-    }
-    #dpad {
-      position: relative;
-      width: 130px;
-      height: 130px;
-    }
-    #btn-up    { position: absolute; top: 0; left: 45px; width: 42px; height: 42px; }
-    #btn-down  { position: absolute; bottom: 0; left: 45px; width: 42px; height: 42px; }
-    #btn-left  { position: absolute; top: 45px; left: 0; width: 42px; height: 42px; }
-    #btn-right { position: absolute; top: 45px; right: 0; width: 42px; height: 42px; }
-
-    #btn-fire {
-      width: 76px;
-      height: 76px;
-      background: rgba(218, 54, 51, 0.85);
-      border: 3px solid #ff7b72;
-      border-radius: 50%;
-      font-size: 16px;
-      letter-spacing: 1px;
-      box-shadow: 0 0 20px rgba(255, 60, 60, 0.6);
-    }
-    #btn-fire:active, #btn-fire.active {
-      background: rgba(255, 0, 0, 1);
-      transform: scale(0.88);
-      box-shadow: 0 0 30px rgba(255, 0, 0, 0.9);
-    }
-
     #overlay {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.88);
+      background: rgba(0, 0, 0, 0.85);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 24px;
+      padding: 20px;
       z-index: 10;
     }
     #overlay h1 {
       color: #ff3333;
-      font-size: 30px;
+      font-size: 32px;
       margin-bottom: 12px;
-      text-shadow: 0 0 12px rgba(255, 50, 50, 0.8);
+      text-shadow: 0 0 10px rgba(255, 50, 50, 0.8);
     }
     #overlay p {
       color: #c9d1d9;
-      font-size: 14px;
-      margin-bottom: 22px;
-      line-height: 1.6;
-      max-width: 440px;
+      font-size: 15px;
+      margin-bottom: 20px;
+      line-height: 1.5;
     }
     .btn {
       background: #238636;
       color: #fff;
       border: none;
-      padding: 14px 28px;
+      padding: 12px 24px;
       font-size: 18px;
       font-weight: bold;
       font-family: inherit;
-      border-radius: 8px;
+      border-radius: 6px;
       cursor: pointer;
-      box-shadow: 0 4px 15px rgba(35, 134, 54, 0.4);
       transition: 0.2s;
     }
-    .btn:active, .btn:hover {
-      background: #2ea043;
-      transform: scale(1.05);
+    .btn:hover { background: #2ea043; transform: scale(1.05); }
+    #mobile-controls {
+      display: none;
+      margin-top: 10px;
+      gap: 12px;
+    }
+    @media (max-width: 768px) {
+      #mobile-controls { display: flex; }
+    }
+    .m-btn {
+      background: #21262d;
+      border: 1px solid #30363d;
+      color: #fff;
+      padding: 12px 18px;
+      border-radius: 6px;
+      font-size: 18px;
     }
   </style>
 </head>
@@ -202,36 +131,24 @@
   <div id="game-container">
     <canvas id="view" width="320" height="200"></canvas>
     <div id="crosshair"></div>
-    
-    <!-- HUD -->
     <div id="hud">
       <div>AMMO: <span class="hud-val" id="ammo-val">8</span></div>
-      <div>ZOMBIES: <span class="hud-val" id="zombie-val">2</span></div>
+      <div>ZOMBIES LEFT: <span class="hud-val" id="zombie-val">2</span></div>
       <div>HP: <span class="hud-val" style="color:#00ff88;">100%</span></div>
     </div>
-
-    <!-- On-screen Touch Controls for Mobile -->
-    <div id="touch-overlay">
-      <div id="dpad">
-        <div class="touch-btn" id="btn-up">▲</div>
-        <div class="touch-btn" id="btn-left">◀</div>
-        <div class="touch-btn" id="btn-right">▶</div>
-        <div class="touch-btn" id="btn-down">▼</div>
-      </div>
-      <div class="touch-btn" id="btn-fire">🔥 ATEŞ</div>
-    </div>
-
-    <!-- Overlay Screen -->
     <div id="overlay">
       <h1 id="title">☣️ MINI DOOM ☣️</h1>
-      <p id="desc">
-        <b>Enis Ay</b>'s GitHub Arena<br><br>
-        <b>Hedef:</b> Koridorda devriye gezen <b>2 zombiyi</b> vur!<br><br>
-        📱 <b>Telefonda:</b> Sol alt butonlarla yürü/dön, kırmızı butona basarak ateş et.<br>
-        💻 <b>Bilgisayarda:</b> [W,A,S,D] hareket, [Sol Tık / Boşluk] ateş.
-      </p>
+      <p id="desc">Enis Ay's GitHub Arena<br><br><b>Hedef:</b> Karşına çıkacak <b>2 zombiyi</b> vur ve alanı temizle!<br><br><b>Kontroller:</b> [W,A,S,D] veya Yön Tuşları ile hareket et.<br>Ateş etmek için <b>SOL TIKLA</b> veya <b>BOŞLUK</b> tuşuna bas.</p>
       <button class="btn" id="start-btn">OYUNU BAŞLAT</button>
     </div>
+  </div>
+
+  <div id="mobile-controls">
+    <button class="m-btn" id="m-left">◀</button>
+    <button class="m-btn" id="m-up">▲</button>
+    <button class="m-btn" id="m-down">▼</button>
+    <button class="m-btn" id="m-right">▶</button>
+    <button class="m-btn" id="m-fire" style="background:#da3633;">🔥 ATEŞ</button>
   </div>
 
   <script>
@@ -244,24 +161,18 @@
     const ammoVal = document.getElementById('ammo-val');
     const zombieVal = document.getElementById('zombie-val');
 
-    // Audio synthesizer with mobile unlock
+    // Audio synthesizer using Web Audio API
     let audioCtx = null;
     function initAudio() {
-      if (!audioCtx) {
-        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      }
-      if (audioCtx.state === 'suspended') {
-        audioCtx.resume();
-      }
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     }
-
     function playShotSound() {
       if (!audioCtx) return;
       const osc = audioCtx.createOscillator();
       const gain = audioCtx.createGain();
       osc.type = 'sawtooth';
-      osc.frequency.setValueAtTime(160, audioCtx.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(30, audioCtx.currentTime + 0.16);
+      osc.frequency.setValueAtTime(150, audioCtx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(30, audioCtx.currentTime + 0.15);
       gain.gain.setValueAtTime(0.4, audioCtx.currentTime);
       gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.18);
       osc.connect(gain);
@@ -269,7 +180,6 @@
       osc.start();
       osc.stop(audioCtx.currentTime + 0.2);
     }
-
     function playHitSound() {
       if (!audioCtx) return;
       const osc = audioCtx.createOscillator();
@@ -284,7 +194,6 @@
       osc.start();
       osc.stop(audioCtx.currentTime + 0.12);
     }
-
     function playWinSound() {
       if (!audioCtx) return;
       [261, 329, 392, 523].forEach((f, i) => {
@@ -315,69 +224,40 @@
       1,1,1,1,1,1,1,1,1,1
     ];
 
+    // Player state
     let posX = 2.5, posY = 2.5;
     let dirX = 1.0, dirY = 0.0;
     let planeX = 0.0, planeY = 0.66;
     let keys = {};
-    let gameState = 'START';
-    let gunAnim = 0;
+    let gameState = 'START'; // START, PLAYING, VICTORY
+    let ammo = 8;
+    let gunAnim = 0; // recoil
     let muzzleFlash = 0;
 
+    // 2 Zombies
     let zombies = [
       { x: 5.5, y: 3.5, hp: 2, dead: false },
       { x: 7.5, y: 6.5, hp: 2, dead: false }
     ];
 
-    // Keyboard Listeners
     window.addEventListener('keydown', e => {
       keys[e.code] = true;
       if (e.code === 'Space') shoot();
     });
     window.addEventListener('keyup', e => { keys[e.code] = false; });
-
-    // Canvas click shoot
     canvas.addEventListener('click', () => { if (gameState === 'PLAYING') shoot(); });
 
-    // Touch Event Binding for Mobile Controls
-    function setupTouch(id, key) {
-      const el = document.getElementById(id);
-      el.addEventListener('touchstart', e => {
-        e.preventDefault();
-        initAudio();
-        keys[key] = true;
-        el.classList.add('active');
-      }, { passive: false });
-
-      el.addEventListener('touchend', e => {
-        e.preventDefault();
-        keys[key] = false;
-        el.classList.remove('active');
-      }, { passive: false });
-
-      el.addEventListener('touchcancel', e => {
-        e.preventDefault();
-        keys[key] = false;
-        el.classList.remove('active');
-      }, { passive: false });
-    }
-
-    setupTouch('btn-up', 'KeyW');
-    setupTouch('btn-down', 'KeyS');
-    setupTouch('btn-left', 'KeyA');
-    setupTouch('btn-right', 'KeyD');
-
-    const fireBtn = document.getElementById('btn-fire');
-    fireBtn.addEventListener('touchstart', e => {
-      e.preventDefault();
-      initAudio();
-      fireBtn.classList.add('active');
-      shoot();
-    }, { passive: false });
-
-    fireBtn.addEventListener('touchend', e => {
-      e.preventDefault();
-      fireBtn.classList.remove('active');
-    }, { passive: false });
+    // Mobile buttons
+    const bindMobile = (id, code) => {
+      const btn = document.getElementById(id);
+      btn.addEventListener('touchstart', (e) => { e.preventDefault(); keys[code] = true; });
+      btn.addEventListener('touchend', (e) => { e.preventDefault(); keys[code] = false; });
+    };
+    bindMobile('m-up', 'KeyW');
+    bindMobile('m-down', 'KeyS');
+    bindMobile('m-left', 'KeyA');
+    bindMobile('m-right', 'KeyD');
+    document.getElementById('m-fire').addEventListener('touchstart', (e) => { e.preventDefault(); shoot(); });
 
     function shoot() {
       if (gameState !== 'PLAYING') return;
@@ -386,6 +266,7 @@
       muzzleFlash = 3;
       playShotSound();
 
+      // Check bullet hit on closest zombie in line of sight
       let hitZombie = null;
       let minDistance = 999;
 
@@ -394,8 +275,9 @@
         const dx = z.x - posX;
         const dy = z.y - posY;
         const dist = Math.sqrt(dx * dx + dy * dy);
+        // Normalize angle
         const dot = (dx * dirX + dy * dirY) / dist;
-        if (dot > 0.91 && dist < minDistance) {
+        if (dot > 0.92 && dist < minDistance) { // within crosshair cone
           minDistance = dist;
           hitZombie = z;
         }
@@ -418,10 +300,10 @@
           playWinSound();
           titleEl.innerText = "🏆 VICTORY! 🏆";
           titleEl.style.color = "#00ff88";
-          descEl.innerHTML = "Tebrikler! 2 zombiyi de alt ettin.<br><br><b>Enis Ay</b>'ın projelerini ve profilini keşfetmeye devam et!";
+          descEl.innerHTML = "Tebrikler! 2 zombiyi de etkisiz hale getirdin.<br><br><b>Enis Ay</b>'ın projelerini incelemek için profili gezmeye devam et!";
           startBtn.innerText = "YENİDEN OYNA";
           overlay.style.display = 'flex';
-        }, 350);
+        }, 400);
       }
     }
 
@@ -443,9 +325,10 @@
     function update() {
       if (gameState !== 'PLAYING') return;
 
-      const moveSpeed = 0.045;
-      const rotSpeed = 0.038;
+      const moveSpeed = 0.04;
+      const rotSpeed = 0.035;
 
+      // Rotate
       if (keys['KeyA'] || keys['ArrowLeft']) {
         const oldDirX = dirX;
         dirX = dirX * Math.cos(-rotSpeed) - dirY * Math.sin(-rotSpeed);
@@ -463,6 +346,7 @@
         planeY = oldPlaneX * Math.sin(rotSpeed) + planeY * Math.cos(rotSpeed);
       }
 
+      // Move forward/backward
       if (keys['KeyW'] || keys['ArrowUp']) {
         if (map[Math.floor(posX + dirX * moveSpeed) + Math.floor(posY) * mapW] === 0) posX += dirX * moveSpeed;
         if (map[Math.floor(posX) + Math.floor(posY + dirY * moveSpeed) * mapW] === 0) posY += dirY * moveSpeed;
@@ -472,6 +356,7 @@
         if (map[Math.floor(posX) + Math.floor(posY - dirY * moveSpeed) * mapW] === 0) posY -= dirY * moveSpeed;
       }
 
+      // Gun recoil animation
       if (gunAnim > 0) gunAnim--;
       if (muzzleFlash > 0) muzzleFlash--;
     }
@@ -481,13 +366,14 @@
       const h = canvas.height;
 
       // Floor & Ceiling
-      ctx.fillStyle = '#14141e';
+      ctx.fillStyle = '#1a1a24';
       ctx.fillRect(0, 0, w, h / 2);
-      ctx.fillStyle = '#1e1e28';
+      ctx.fillStyle = '#22222a';
       ctx.fillRect(0, h / 2, w, h / 2);
 
       const zBuffer = new Array(w);
 
+      // Raycasting Walls
       for (let x = 0; x < w; x++) {
         const cameraX = (2 * x) / w - 1;
         const rayDirX = dirX + planeX * cameraX;
@@ -538,13 +424,14 @@
         let drawEnd = lineHeight / 2 + h / 2;
         if (drawEnd >= h) drawEnd = h - 1;
 
-        let color = side === 1 ? '#333b49' : '#475366';
-        if (perpWallDist > 5) color = '#151922';
+        // Shading
+        let color = side === 1 ? '#3a4454' : '#4f5d73';
+        if (perpWallDist > 5) color = '#1a202c';
         ctx.fillStyle = color;
         ctx.fillRect(x, drawStart, 1, drawEnd - drawStart);
       }
 
-      // Draw Zombies
+      // Draw Zombies (Sprites)
       const sortedZombies = [...zombies]
         .map((z, idx) => ({ ...z, id: idx, dist: ((posX - z.x) ** 2 + (posY - z.y) ** 2) }))
         .sort((a, b) => b.dist - a.dist);
@@ -571,14 +458,17 @@
           for (let stripe = drawStartX; stripe < drawEndX; stripe++) {
             if (transformY < zBuffer[stripe]) {
               const relX = (stripe - (-spriteWidth / 2 + spriteScreenX)) / spriteWidth;
-              ctx.fillStyle = z.hp === 1 ? '#cc2222' : '#2d863f';
+              // Draw pixelated green zombie with glowing red eyes
+              ctx.fillStyle = z.hp === 1 ? '#cc3333' : '#2b823e'; // flash red if hit
               ctx.fillRect(stripe, drawStartY + spriteHeight * 0.15, 1, (drawEndY - drawStartY) * 0.7);
 
+              // Zombie head
               if (relX > 0.35 && relX < 0.65) {
                 ctx.fillStyle = '#44aa55';
                 ctx.fillRect(stripe, drawStartY, 1, (drawEndY - drawStartY) * 0.25);
-                if ((relX > 0.42 && relX < 0.48) || (relX > 0.52 && relX < 0.58)) {
-                  ctx.fillStyle = '#ff1111';
+                // Red glowing eyes
+                if (relX > 0.42 && relX < 0.48 || relX > 0.52 && relX < 0.58) {
+                  ctx.fillStyle = '#ff0000';
                   ctx.fillRect(stripe, drawStartY + (drawEndY - drawStartY) * 0.08, 1, 3);
                 }
               }
@@ -587,18 +477,22 @@
         }
       });
 
-      // Doom Shotgun Rendering
+      // Draw Doom Shotgun Weapon
       const gunX = w / 2 - 25;
       const gunY = h - 55 + (gunAnim > 0 ? 12 : 0);
 
+      // Shotgun barrel & body
       ctx.fillStyle = '#111';
       ctx.fillRect(gunX + 15, gunY, 20, 55);
       ctx.fillStyle = '#555';
       ctx.fillRect(gunX + 18, gunY + 5, 6, 45);
       ctx.fillRect(gunX + 26, gunY + 5, 6, 45);
+
+      // Stock
       ctx.fillStyle = '#654321';
       ctx.fillRect(gunX + 16, gunY + 35, 18, 20);
 
+      // Muzzle Flash
       if (muzzleFlash > 0) {
         ctx.fillStyle = '#ffff00';
         ctx.beginPath();
