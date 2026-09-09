@@ -81,6 +81,21 @@
 
 ---
 
+### 🎮 Mini DOOM: Retro FPS Arena (Playable in Browser!)
+
+> 💥 **Can you survive?** A retro 2.5D Raycaster FPS built directly with vanilla HTML5 Canvas & Web Audio API. Grab your shotgun, eliminate the 2 zombies, and clear the room!
+
+<div align="center">
+  <p>
+    <a href="https://enisay35.github.io/EnisAy35/" target="_blank">
+      <img src="https://img.shields.io/badge/▶️_PLAY_MINI_DOOM_NOW-FF0000?style=for-the-badge&logo=doom&logoColor=white" alt="Play Mini DOOM" height="42" />
+    </a>
+  </p>
+  <p><i>🕹️ Click the button above to launch and play instantly! Controls: [W, A, S, D] to move, Left Click / Space to shoot.</i></p>
+</div>
+
+---
+
 <div align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=1,12,24&height=100&section=footer" width="100%" alt="Footer" />
 </div>
