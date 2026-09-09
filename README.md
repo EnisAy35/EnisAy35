@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=1,12,24&height=220&section=header&text=Enis%20Ay&fontSize=48&fontColor=ffffff&animation=fadeIn&subtext=Software%20Engineer%20%7C%20Game%20%26%20Full%20Stack%20Developer&subfontSize=18&subtextBg=false" width="100%" alt="Header" />
+  <img src="./assets/pacman-banner.svg" width="100%" alt="Enis Ay" />
 
   <a href="https://git.io/typing-svg">
     <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=19&pause=1000&color=00D2FF&center=true&vCenter=true&width=620&lines=Game+Developer+%28Unity+%26+Unreal+Engine+5%29;Full+Stack+%26+Mobile+Engineer+%28Go+%2F+React+Native%29;Software+Engineering+Student+%40+Ya%C5%9Far+Univ.;Building+Scalable+Architectures+%26+Mechanics" alt="Typing SVG" />

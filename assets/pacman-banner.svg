@@ -1,0 +1,233 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 220" width="100%" height="220">
+  <defs>
+    <!-- Pastel Sunset to Ocean Wave Gradient (Matching capsule-render 1,12,24) -->
+    <linearGradient id="pastelGrad" x1="0%" y1="20%" x2="100%" y2="80%">
+      <stop offset="0%" stop-color="#f59e6c" />
+      <stop offset="25%" stop-color="#e8758c" />
+      <stop offset="52%" stop-color="#a472d8" />
+      <stop offset="78%" stop-color="#4ea9e0" />
+      <stop offset="100%" stop-color="#3ddbd4" />
+    </linearGradient>
+
+    <!-- Clip Path for the organic waving banner shape -->
+    <clipPath id="waveClip">
+      <path d="M 0 0 L 900 0 L 900 185 C 750 215, 520 170, 300 205 C 160 225, 60 210, 0 195 Z" />
+    </clipPath>
+
+    <!-- Subtle Drop Shadow -->
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#000000" flood-opacity="0.25" />
+    </filter>
+
+    <filter id="textShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000000" flood-opacity="0.3" />
+    </filter>
+  </defs>
+
+  <style><![CDATA[
+    /* Minimalist Corridor Line */
+    .corridor-line {
+      fill: none;
+      stroke: #ffffff;
+      stroke-width: 1.2;
+      stroke-opacity: 0.28;
+      stroke-dasharray: 5 5;
+    }
+
+    /* Pellets */
+    .pellet {
+      fill: #ffffff;
+      opacity: 0.5;
+    }
+
+    /* Shared Motion Keyframe (Loop across the banner)
+       Width: 760px (70 to 830), Height: 125px (35 to 160)
+    */
+    @keyframes followPath {
+      0%      { transform: translate(70px, 35px); }
+      44.18%  { transform: translate(830px, 35px); }
+      50.00%  { transform: translate(830px, 160px); }
+      94.18%  { transform: translate(70px, 160px); }
+      100%    { transform: translate(70px, 35px); }
+    }
+
+    /* Pac-Man Rotation: turns accurately in all 4 directions */
+    @keyframes pacmanRot {
+      0%, 44.17%     { transform: rotate(0deg); }
+      44.18%, 49.99% { transform: rotate(90deg); }
+      50.00%, 94.17% { transform: scaleX(-1); }
+      94.18%, 99.99% { transform: rotate(-90deg); }
+      100%           { transform: rotate(0deg); }
+    }
+
+    /* Ghost Flip */
+    @keyframes ghostFlip {
+      0%, 49.99%     { transform: scaleX(1); }
+      50.00%, 99.99% { transform: scaleX(-1); }
+      100%           { transform: scaleX(1); }
+    }
+
+    /* Ghost Eyes */
+    @keyframes ghostEyes {
+      0%, 44.17%     { transform: translate(2px, 0px); }
+      44.18%, 49.99% { transform: translate(0px, 2px); }
+      50.00%, 94.17% { transform: translate(-2px, 0px); }
+      94.18%, 99.99% { transform: translate(0px, -2px); }
+      100%           { transform: translate(2px, 0px); }
+    }
+
+    /* Pac-Man Jaws Chomp */
+    @keyframes chompTop {
+      0%, 100% { transform: rotate(0deg); }
+      50%      { transform: rotate(-30deg); }
+    }
+    @keyframes chompBottom {
+      0%, 100% { transform: rotate(0deg); }
+      50%      { transform: rotate(30deg); }
+    }
+    .jaw-top {
+      animation: chompTop 0.24s ease-in-out infinite;
+      transform-origin: 0px 0px;
+    }
+    .jaw-bottom {
+      animation: chompBottom 0.24s ease-in-out infinite;
+      transform-origin: 0px 0px;
+    }
+
+    /* Ghost Skirt Flutter */
+    @keyframes skirtWiggle {
+      0%, 100% { transform: translateY(0px); }
+      50%      { transform: translateY(1px); }
+    }
+    .ghost-skirt {
+      animation: skirtWiggle 0.28s ease-in-out infinite;
+    }
+
+    /* Motion Tracks */
+    .lead-track {
+      animation: followPath 12s linear infinite;
+      animation-delay: -0.8s;
+    }
+    .lead-rot {
+      animation: ghostFlip 12s step-end infinite;
+      animation-delay: -0.8s;
+    }
+    .lead-eyes {
+      animation: ghostEyes 12s step-end infinite;
+      animation-delay: -0.8s;
+    }
+
+    .second-track {
+      animation: followPath 12s linear infinite;
+      animation-delay: -0.4s;
+    }
+    .second-rot {
+      animation: ghostFlip 12s step-end infinite;
+      animation-delay: -0.4s;
+    }
+    .second-eyes {
+      animation: ghostEyes 12s step-end infinite;
+      animation-delay: -0.4s;
+    }
+
+    .pacman-track {
+      animation: followPath 12s linear infinite;
+      animation-delay: 0s;
+    }
+    .pacman-rot {
+      animation: pacmanRot 12s step-end infinite;
+      animation-delay: 0s;
+    }
+  ]]></style>
+
+  <!-- Waving Banner Body -->
+  <g clip-path="url(#waveClip)">
+    <!-- Main Pastel Gradient Fill -->
+    <rect width="900" height="220" fill="url(#pastelGrad)" />
+
+    <!-- Organic Translucent Wave Accents at Bottom -->
+    <path d="M 0 175 C 240 150, 520 205, 900 160 L 900 220 L 0 220 Z" fill="#ffffff" fill-opacity="0.14" />
+    <path d="M 0 190 C 280 215, 600 170, 900 185 L 900 220 L 0 220 Z" fill="#ffffff" fill-opacity="0.22" />
+
+    <!-- Minimalist Corridor Guide Lines (Discreet) -->
+    <rect x="70" y="35" width="760" height="125" rx="10" class="corridor-line" />
+
+    <!-- Minimalist Pellets -->
+    <g>
+      <!-- Top Corridor -->
+      <circle cx="120" cy="35" r="2" class="pellet" />
+      <circle cx="180" cy="35" r="2" class="pellet" />
+      <circle cx="240" cy="35" r="2" class="pellet" />
+      <circle cx="300" cy="35" r="2" class="pellet" />
+      <circle cx="360" cy="35" r="2" class="pellet" />
+      <circle cx="420" cy="35" r="2" class="pellet" />
+      <circle cx="480" cy="35" r="2" class="pellet" />
+      <circle cx="540" cy="35" r="2" class="pellet" />
+      <circle cx="600" cy="35" r="2" class="pellet" />
+      <circle cx="660" cy="35" r="2" class="pellet" />
+      <circle cx="720" cy="35" r="2" class="pellet" />
+      <circle cx="780" cy="35" r="2" class="pellet" />
+
+      <!-- Bottom Corridor -->
+      <circle cx="120" cy="160" r="2" class="pellet" />
+      <circle cx="180" cy="160" r="2" class="pellet" />
+      <circle cx="240" cy="160" r="2" class="pellet" />
+      <circle cx="300" cy="160" r="2" class="pellet" />
+      <circle cx="360" cy="160" r="2" class="pellet" />
+      <circle cx="420" cy="160" r="2" class="pellet" />
+      <circle cx="480" cy="160" r="2" class="pellet" />
+      <circle cx="540" cy="160" r="2" class="pellet" />
+      <circle cx="600" cy="160" r="2" class="pellet" />
+      <circle cx="660" cy="160" r="2" class="pellet" />
+      <circle cx="720" cy="160" r="2" class="pellet" />
+      <circle cx="780" cy="160" r="2" class="pellet" />
+    </g>
+
+    <!-- CHARACTERS (THE CHASE) -->
+
+    <!-- Lead Ghost: Blinky (Coral Red) -->
+    <g class="lead-track" filter="url(#shadow)">
+      <g class="lead-rot">
+        <path d="M -8 2 A 8 8 0 0 1 8 2 L 8 8 L 5.5 6.5 L 3 8 L 0 6.5 L -3 8 L -5.5 6.5 L -8 8 Z" fill="#FF3366" class="ghost-skirt" />
+        <g class="lead-eyes">
+          <circle cx="-3" cy="0" r="2.6" fill="#ffffff" />
+          <circle cx="3" cy="0" r="2.6" fill="#ffffff" />
+          <circle cx="-2" cy="0" r="1.2" fill="#0f172a" />
+          <circle cx="4" cy="0" r="1.2" fill="#0f172a" />
+        </g>
+      </g>
+    </g>
+
+    <!-- Second Ghost: Inky (Electric Cobalt Blue) -->
+    <g class="second-track" filter="url(#shadow)">
+      <g class="second-rot">
+        <path d="M -8 2 A 8 8 0 0 1 8 2 L 8 8 L 5.5 6.5 L 3 8 L 0 6.5 L -3 8 L -5.5 6.5 L -8 8 Z" fill="#0984e3" class="ghost-skirt" />
+        <g class="second-eyes">
+          <circle cx="-3" cy="0" r="2.6" fill="#ffffff" />
+          <circle cx="3" cy="0" r="2.6" fill="#ffffff" />
+          <circle cx="-2" cy="0" r="1.2" fill="#0f172a" />
+          <circle cx="4" cy="0" r="1.2" fill="#0f172a" />
+        </g>
+      </g>
+    </g>
+
+    <!-- Pac-Man: Chasing right behind -->
+    <g class="pacman-track" filter="url(#shadow)">
+      <g class="pacman-rot">
+        <path d="M 0 0 L 11 0 A 11 11 0 0 0 -11 0 Z" fill="#FFE600" class="jaw-top" />
+        <path d="M 0 0 L 11 0 A 11 11 0 0 1 -11 0 Z" fill="#FFE600" class="jaw-bottom" />
+        <circle cx="1" cy="-6" r="1.2" fill="#2d3436" />
+      </g>
+    </g>
+
+    <!-- CENTER TEXT: Enis Ay (Crisp, clean, integrated into wave) -->
+    <g filter="url(#textShadow)">
+      <text x="450" y="102" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="48" font-weight="800" fill="#ffffff" letter-spacing="1.5">
+        Enis Ay
+      </text>
+      <text x="450" y="130" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="500" fill="#ffffff" fill-opacity="0.95" letter-spacing="0.5">
+        Software Engineer | Game &amp; Full Stack Developer
+      </text>
+    </g>
+  </g>
+</svg>
