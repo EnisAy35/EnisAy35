@@ -6,17 +6,11 @@
   </a>
 
   <p align="center">
-    <a href="https://linkedin.com/in/YOUR-LINKEDIN-USERNAME" target="_blank">
+    <a href="https://www.linkedin.com/in/enis-ay/" target="_blank">
       <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
     </a>
-    <a href="https://YOUR-ITCHIO-USERNAME.itch.io" target="_blank">
-      <img src="https://img.shields.io/badge/itch.io-FA5C5C?style=for-the-badge&logo=itch.io&logoColor=white" alt="itch.io" />
-    </a>
-    <a href="mailto:your-email@example.com">
+    <a href="mailto:enisay36@gmail.com">
       <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" />
-    </a>
-    <a href="https://github.com/EnisAy35">
-      <img src="https://komarev.com/ghpvc/?username=EnisAy35&color=00D2FF&style=for-the-badge&label=PROFILE+VIEWS" alt="Profile Views" />
     </a>
   </p>
 </div>
@@ -42,7 +36,6 @@
   <img src="https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white" alt="C#" />
   <img src="https://img.shields.io/badge/ShaderLab-438eff?style=for-the-badge&logo=opengl&logoColor=white" alt="ShaderLab" />
   <img src="https://img.shields.io/badge/.NET-512BD4?style=for-the-badge&logo=dotnet&logoColor=white" alt=".NET" />
-  <img src="https://img.shields.io/badge/itch.io-FA5C5C?style=for-the-badge&logo=itchdotio&logoColor=white" alt="itch.io" />
 </p>
 
 #### 💻 Programming Languages & Systems
